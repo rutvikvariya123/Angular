@@ -1,0 +1,9 @@
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.setBox{
+    position: absolute;
+    right: 16px;
+    bottom: -90px;
+}

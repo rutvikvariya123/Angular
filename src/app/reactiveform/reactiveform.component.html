@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-dark bg-dark rounded p-3 text-white m-1">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <div>Hello</div>
+            <div>
+              <button
+                class="navbar-toggler"
+                type="button"
+                (click)="toggleNavbar()"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse"
+                [ngClass]="{ show: isNavbarOpen }"
+              >
+                <ul class="navbar-nav nav-item dropdown dropdown-menu setBox">
+                  <li><a class="dropdown-item">Profile</a></li>
+                  <li>
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="my-5 border border-1 rounded border-secondary p-3">
+        <form [formGroup]="userForm" (ngSubmit)="submitData()">
+          <!-- <div>
+            <button type="button" class="btn btn-primary" (click)="onClickO()">load</button>
+            <router-outlet></router-outlet>
+          </div> -->
+          <!-- <div class="row">
+            <div>
+              <button type="button" class="btn btn-primary" (click)="canDeactivate()">Click Me</button>
+            </div>
+          </div> -->
+          <div class="row d-flex justify-content-between">
+            <div class="col-md-3 col-sm-4 m-2">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input type="text" name="fname"formControlName="fname"class="form-control"/>
+              </div>
+              <div *ngIf=" getControl.fname.invalid && (submitted || getControl.fname.dirty ||getControl.fname.touched)">
+                <div *ngIf=" getControl.fname.errors && getControl.fname.errors.required" class="text-danger">
+                  First Name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <div>
+                <label class="form-label">Last Name</label>
+                <input type="text" name="lname" formControlName="lname" class="form-control"/>
+              </div>
+              <div *ngIf=" getControl.lname.invalid && (submitted || getControl.lname.dirty || getControl.lname.touched)">
+                <div *ngIf="getControl.lname.errors && getControl.lname.errors.required" class="text-danger">
+                  Last Name is required
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" formControlName="email" class="form-control"/>
+              <div *ngIf="(submitted ||getControl.email.dirty ||getControl.email.touched) && getControl.email.invalid">
+                <div *ngIf=" getControl.email.errors && getControl.email.errors.required" class="text-danger">
+                  Email is required
+                </div>
+                <div *ngIf="getControl.email.errors &&!getControl.email.errors.required &&getControl.email.errors.email"class="text-danger">
+                  Email must be a valid email address
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-3 col-sm-4 m-2" formArrayName="email">
+              <label class="form-label">Email</label> 
+              <div class="d-flex">
+                <div class="d-flex flex-column">
+                  <div *ngFor="let emails of email.controls; let i=index">
+                    <div class="d-flex align-items-center">
+                      <input type="email" name="email" [formControlName]="i" class="form-control"/>
+                      <button *ngIf="i > 0" type="button" class="btn btn-danger ms-1" (click)="removeEmail(i)">-</button>
+                    </div>
+                    <div *ngIf="(submitted || emails.dirty || emails.touched) && emails.invalid">
+                      <div *ngIf="emails.errors && emails.errors.required" class="text-danger">
+                        Email is required
+                      </div>
+                      <div *ngIf="emails.errors && !emails.errors.required && emails.errors.email" class="text-danger">
+                        Email must be a valid email address
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-primary ms-1" (click)="addEmail()">+</button>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">Mobile Number</label>
+              <input type="text" name="contact" formControlName="contact" (keypress)="inputMno($event)" class="form-control"/>
+              <div *ngIf="getControl.contact.invalid && (submitted ||getControl.contact.dirty ||getControl.contact.touched)">
+                <div *ngIf="getControl.contact.errors &&getControl.contact.errors.required" class="text-danger">
+                  Mobile Number is required
+                </div>
+                <div *ngIf="getControl.contact.errors &&(getControl.contact.errors.pattern ||getControl.contact.errors.maxlength ||getControl.contact.errors.minlength)"class="text-danger">
+                  Phone Number must be at least 10 numbers
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-3 col-sm-4 m-2" formArrayName="contact">
+              <label class="form-label">Mobile Number</label>
+              <div class="d-flex">
+                <div class="d-flex flex-column">
+                  <div *ngFor="let contactControl of contact.controls; let i=index" class="mb-2">
+                    <div class="d-flex align-items-center">
+                      <input type="text" name="contact" [formControlName]="i" (keypress)="inputMno($event)" class="form-control"/>
+                      <button *ngIf="i > 0" type="button" class="btn btn-danger ms-1" (click)="removeContact(i)">-</button>
+                    </div>
+                    <div *ngIf="(submitted || contactControl.dirty || contactControl.touched) && contactControl.invalid">
+                      <div *ngIf="contactControl.errors?.required" class="text-danger">
+                        Mobile Number is required
+                      </div>
+                      <div *ngIf="contactControl.errors?.pattern || contactControl.errors?.maxlength || contactControl.errors?.minlength" class="text-danger">
+                        Phone Number must be at least 10 numbers
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-primary ms-1" (click)="addContact()">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">Department</label>
+              <select
+                name="department"
+                class="form-control"
+                formControlName="department"
+              >
+                <option value="">---- Please select ----</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemestry">Chemestry</option>
+                <option value="Maths">Maths</option>
+              </select>
+              <div
+                *ngIf="
+                  getControl.department.invalid &&
+                  (submitted ||
+                    getControl.department.dirty ||
+                    getControl.department.touched)
+                "
+              >
+                <div
+                  *ngIf="
+                    getControl.department.errors &&
+                    getControl.department.errors.required
+                  "
+                  class="text-danger"
+                >
+                  Department is Required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="d-block form-label">Head</label>
+              <label class="radio-inline me-2"
+                ><input
+                  type="radio"
+                  name="head"
+                  formControlName="head"
+                  value="Head Boy"
+                />
+                Head Boy</label
+              >
+              <label class="radio-inline"
+                ><input
+                  type="radio"
+                  name="head"
+                  formControlName="head"
+                  value="Head Girl"
+                />
+                Head Girl</label
+              >
+              <div
+                *ngIf="
+                  getControl.head.invalid &&
+                  (submitted ||
+                    getControl.head.dirty ||
+                    getControl.head.touched)
+                "
+              >
+                <div
+                  *ngIf="
+                    getControl.head.errors && getControl.head.errors.required
+                  "
+                  class="text-danger"
+                >
+                  Head is Required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">Date</label>
+              <input
+                type="date"
+                class="form-control"
+                name="date"
+                formControlName="date"
+                [min]="minDate"
+              />
+              <div
+                *ngIf="
+                  getControl.date.invalid &&
+                  (submitted ||
+                    getControl.date.dirty ||
+                    getControl.date.touched)
+                "
+              >
+                <div
+                  *ngIf="
+                    getControl.date.errors && getControl.date.errors.required
+                  "
+                  class="text-danger"
+                >
+                  Date is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">City</label>
+              <input
+                type="text"
+                name="city"
+                formControlName="city"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  getControl.city.invalid &&
+                  (submitted ||
+                    getControl.city.dirty ||
+                    getControl.city.touched)
+                "
+              >
+                <div
+                  *ngIf="
+                    getControl.city.errors && getControl.city.errors.required
+                  "
+                  class="text-danger"
+                >
+                  City is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">State</label>
+              <input
+                type="text"
+                name="state"
+                formControlName="state"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  getControl.state.invalid &&
+                  (submitted ||
+                    getControl.state.dirty ||
+                    getControl.state.touched)
+                "
+              >
+                <div
+                  *ngIf="
+                    getControl.state.errors && getControl.state.errors.required
+                  "
+                  class="text-danger"
+                >
+                  State is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">Country</label>
+              <input
+                type="text"
+                name="country"
+                formControlName="country"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  getControl.country.invalid &&
+                  (submitted ||
+                    getControl.country.dirty ||
+                    getControl.country.touched)
+                "
+              >
+                <div
+                  *ngIf="
+                    getControl.country.errors &&
+                    getControl.country.errors.required
+                  "
+                  class="text-danger"
+                >
+                  Country is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">Pincode</label>
+              <input
+                type="text"
+                name="pincode"
+                formControlName="pincode"
+                class="form-control"
+                (keypress)="pincode($event)"
+              />
+              <div
+                *ngIf="
+                  getControl.pincode.invalid &&
+                  (submitted ||
+                    getControl.pincode.dirty ||
+                    getControl.pincode.touched)
+                "
+              >
+                <div
+                  *ngIf="
+                    getControl.pincode.errors &&
+                    getControl.pincode.errors.required
+                  "
+                  class="text-danger"
+                >
+                  Pincode is required
+                </div>
+                <div
+                  *ngIf="
+                    getControl.pincode.errors &&
+                    (getControl.pincode.errors.maxlength ||
+                      getControl.pincode.errors.minlength)
+                  "
+                  class="text-danger"
+                >
+                  Pincode must be 6 digit
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">Password</label>
+              <input type="{{ showPasswords? 'password' : 'text' }}" name="password" formControlName="password" class="form-control" autocomplete="new-password" (click)="togglePassword($event)" noSpace/>
+              <div *ngIf="(submitted && getControl.password?.invalid) || getControl.password.dirty || getControl.password.touched">
+                <div *ngIf="getControl.password?.errors?.required" class="text-danger">
+                  Password is required
+                </div>
+                <div *ngIf="getControl.password?.errors?.minlength" class="text-danger"> Password must be greater than 6 characters </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 m-2">
+              <label class="form-label">Confirm Password</label>
+              <input type="{{ showPasswords? 'password' : 'text' }}"  formControlName="cpassword" class="form-control" (click)="togglePassword($event)" noSpace/>
+              <div *ngIf=" (submitted && getControl.cpassword?.invalid) || getControl.cpassword.dirty || getControl.cpassword.touched">
+                <div *ngIf="getControl.cpassword?.errors?.required" class="text-danger">
+                  Confirm Password is required
+                </div>
+                <div *ngIf=" userForm.errors?.mismatch && getControl.cpassword.dirty" class="text-danger">
+                  Passwords do not match.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-sm-4 m-2">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="cbox"
+                    formControlName="cbox"
+                  />
+                  <label class="form-check-label"
+                    >I agree terms and conditions</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <button *ngIf="showSubmit" type="submit" class="btn btn-dark m-1">
+              Submit
+            </button>
+            <!-- <button *ngIf="showUpdate" type="button" class="btn btn-info" (click)="updateData()">Update</button> -->
+          </div>
+        </form>
+
+        <div class="my-5 mat-elevation-z8">
+          <table class="table m-auto">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>FullName</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Department</th>
+                <th>Head</th>
+                <th>Date</th>
+                <th>action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let userss of userssss | paginate:{itemsPerPage:3,currentPage:p}">
+              <tr>
+                <td>{{ userss.id }}</td>
+                <!-- <td>{{ userss.fname | firstCapital }} {{ userss.lname | firstCapital }}</td> -->
+                <td>
+                  {{ userss.fname | titlecase }} {{ userss.lname | titlecase }}
+                </td>
+                <!-- <td>{{ userss.fname.charAt(0).toUpperCase() + userss.fname.slice(1) }} {{ userss.lname.charAt(0).toUpperCase() + userss.lname.slice(1) }}</td> -->
+                <td>{{ userss.email }}</td>
+                <td>{{ userss.contact }}</td>
+                <td>{{ userss.department }}</td>
+                <td>{{ userss.head }}</td>
+                <!-- <td>{{userss.date}}</td>  -->
+                <td>{{ userss.date | dateFormate }}</td>
+                <td>
+                  <!-- same page edit and upate -->
+                  <!-- <button class="btn btn-secondary me-2" (click)="editUser(userss)">Edit</button> -->
+
+                  <!-- update data using a acive router -->
+                  <button class="btn btn-dark">
+                    <mat-slide-toggle
+                      (change)="toggleBtn(userss.id, $event)"
+                    ></mat-slide-toggle>
+                  </button>
+                  <button
+                    class="btn btn-secondary mx-2"
+                    [disabled]="isEditable[userss.id]"
+                    (click)="editData(userss.id)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-danger"
+                    [disabled]="isEditable[userss.id]"
+                    (click)="deleteUser(userss.id)"
+                  >
+                    delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        <div class="text-center py-4">
+          <pagination-controls (pageChange)="p=$event"></pagination-controls>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

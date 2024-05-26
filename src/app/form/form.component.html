@@ -1,0 +1,40 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="main">
+        <div class="box">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"
+                   [(ngModel)]="username" #usernameRef="ngModel" required minlength="4">
+            <!-- Display errors only if the form was submitted and there are errors -->
+            <div *ngIf="submitted && usernameRef.errors">
+              <p *ngIf="usernameRef.errors['required']">Username is required.</p>
+              <p *ngIf="usernameRef.errors['minlength']">Username must be at least 4 characters long.</p>
+            </div>
+          </div>
+        
+          <div class="box">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"
+                   [(ngModel)]="email" #emailRef="ngModel" required email>
+            <div *ngIf="submitted && emailRef.errors">
+              <p *ngIf="emailRef.errors['required']">Email is required.</p>
+              <p *ngIf="emailRef.errors['email']">Please enter a valid email address.</p>
+            </div>
+          </div>
+          
+          <div class="box">
+              <label for="number">Mobile Number:</label>
+              <input type="text" id="number" name="number"  (keypress)="enterNumber($event)"
+                     [(ngModel)]="number" #numberRef="ngModel" required pattern="^\d{10}$">
+              <div *ngIf="submitted && numberRef.errors">
+                <p *ngIf="numberRef.errors['required']">Mobile Number is required.</p>
+                <p *ngIf="numberRef.errors['pattern']">Please enter a 10 digit mobile number</p>
+              </div>
+          </div>
+        <div class="box"> 
+            <button type="submit" >Submit</button>
+        </div>
+    </div>
+
+    
+    <!-- Submit button -->
+</form>

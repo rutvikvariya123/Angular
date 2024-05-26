@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row my-3">
+            <div class="col-6 m-auto border p-5 rounded">
+                <div>
+                    <h3 class="text-center border-b">Sign Up</h3>
+                </div>
+                <form [formGroup]="signUpform" (ngSubmit)="submitData()">
+                    <div class="form-group mb-4">
+                        <label>User Name</label>
+                        <input type="text" class="form-control" name="uname" formControlName="uname" placeholder="Enter User Name">
+                        <div *ngIf="getControl.uname.invalid && (submited || getControl.uname.dirty || getControl.uname.touched)">
+                            <div *ngIf="getControl.uname.errors && getControl.uname.errors.required" class="text-danger">User Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" formControlName="email" placeholder="Enter User email">
+                        <div *ngIf="getControl.email.invalid && (submited || getControl.email.dirty || getControl.email.touched)">
+                            <div *ngIf="getControl.email.errors && getControl.email.errors.required" class="text-danger">Email is required</div>
+                            <div *ngIf="getControl.email.errors && getControl.email.errors.email" class="text-danger">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" formControlName="password" placeholder="Enter User password" autocomplete="new-password">
+                        <div *ngIf="submited && getControl.password?.invalid || (getControl.password.dirty || getControl.password.touched)">
+                            <div *ngIf="getControl.password?.errors?.required" class="text-danger">Password is required</div>
+                            <div *ngIf="getControl.password?.errors?.minlength" class="text-danger">Password must be greater than 6 characters</div>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-dark">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

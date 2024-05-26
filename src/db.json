@@ -1,0 +1,224 @@
+{
+  "addUser": [
+    {
+      "fname": "rahul",
+      "lname": "vora",
+      "email": "rahul123@gmail.com",
+      "contact": "9624023187",
+      "department": "Physics",
+      "head": "Head Boy",
+      "date": "2024-05-20",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "rahul*123",
+      "cpassword": "rahul*123",
+      "cbox": true,
+      "id": "1862"
+    },
+    {
+      "id": "b4b1",
+      "fname": "vishal",
+      "lname": "gohil",
+      "email": "vishal@gmail.com",
+      "contact": "9087867767",
+      "department": "Physics",
+      "head": "Head Boy",
+      "date": "2024-05-31",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "vishal12345",
+      "cpassword": "vishal12345",
+      "cbox": true
+    },
+    {
+      "id": "d09a",
+      "fname": "test",
+      "lname": "test",
+      "email": "test@email.com",
+      "contact": "9865324512",
+      "department": "Physics",
+      "head": "Head Boy",
+      "date": "2024-05-17",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395006",
+      "password": "test*123",
+      "cpassword": "test*123",
+      "cbox": true
+    },
+    {
+      "id": "d3fc",
+      "fname": "kaushik",
+      "lname": "devganiya",
+      "email": "kd@gmail.com",
+      "contact": "9078675645",
+      "department": "Maths",
+      "head": "Head Boy",
+      "date": "2024-05-18",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "kd*123",
+      "cpassword": "kd*123",
+      "cbox": true
+    },
+    {
+      "fname": "rutvik",
+      "lname": "variya",
+      "email": "rutvik@gmail.com",
+      "contact": "9078765665",
+      "department": "Maths",
+      "head": "Head Boy",
+      "date": "2024-05-18",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "rutvik*123",
+      "cpassword": "rutvik*123",
+      "cbox": true,
+      "id": "d105"
+    },
+    {
+      "id": "c9e6",
+      "fname": "dummy",
+      "lname": "dummy",
+      "email": "dummy@gmail.com",
+      "contact": "9078564543",
+      "department": "Chemestry",
+      "head": "Head Boy",
+      "date": "2024-05-18",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "456789",
+      "cpassword": "456789",
+      "cbox": true
+    },
+    {
+      "fname": "prince 78",
+      "lname": "hello",
+      "email": "prince@gmail.com",
+      "contact": "9078675645",
+      "department": "Physics",
+      "head": "Head Boy",
+      "date": "2024-05-17",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "prince*123",
+      "cpassword": "prince*123",
+      "cbox": true,
+      "id": "18ac"
+    },
+    {
+      "id": "6eb2",
+      "fname": "hardik",
+      "lname": "kalsariya",
+      "email": "hardik@gmail.com",
+      "contact": "9078563423",
+      "department": "Chemestry",
+      "head": "Head Boy",
+      "date": "2024-05-18",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "hardik*123",
+      "cpassword": "hardik*123",
+      "cbox": true
+    },
+    {
+      "id": "70e8",
+      "fname": "jiyan",
+      "lname": "raval",
+      "email": "jiyan@gmail.com",
+      "contact": "8978675645",
+      "department": "Maths",
+      "head": "Head Boy",
+      "date": "2024-05-22",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "789456",
+      "cpassword": "789456",
+      "cbox": true
+    },
+    {
+      "id": "c929",
+      "fname": "jack",
+      "lname": "oggy",
+      "email": [
+        "oggy@email.com",
+        "jack@gmail.com"
+      ],
+      "contact": [
+        "8967453423",
+        "8967453423"
+      ],
+      "department": "Physics",
+      "head": "Head Boy",
+      "date": "2024-05-25",
+      "city": "surat",
+      "state": "gujrat",
+      "country": "india",
+      "pincode": "395004",
+      "password": "395004",
+      "cpassword": "395004",
+      "cbox": true
+    }
+  ],
+  "auth": [
+    {
+      "id": "fa88",
+      "uname": "rutvik",
+      "email": "rutvik@gmail.com",
+      "password": "1234556"
+    },
+    {
+      "id": "e3fc",
+      "uname": "yash",
+      "email": "yash@gmail.com",
+      "password": "yash*123"
+    },
+    {
+      "id": "98b5",
+      "uname": "abc",
+      "email": "yashdip@gmail.com",
+      "password": "098765"
+    },
+    {
+      "id": "5000",
+      "uname": "jack",
+      "email": "jack@gmail.com",
+      "password": "jack*123"
+    },
+    {
+      "id": "7d75",
+      "uname": "Hello World",
+      "email": "helloWorld@gmail.com",
+      "password": "1234567890"
+    },
+    {
+      "id": "34dc",
+      "uname": "nayan",
+      "email": "nayan@gmail.com",
+      "password": "nayan123"
+    },
+    {
+      "id": "d0ea",
+      "uname": "dummy",
+      "email": "dummy@gmail.com",
+      "password": "dummy*123"
+    }
+  ]
+}

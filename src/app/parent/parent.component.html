@@ -1,0 +1,9 @@
+<div>
+    <p>parent works!</p>
+    <input type="text" #box placeholder="Input here">
+    <button (click)="getValue(box.value)">Submit</button>
+    
+    <app-lifecycle-method [myData]="value" *ngIf="toggle">ngContent {{value}}</app-lifecycle-method><br><br><br>
+    
+    <button class="btn btn-danger" (click)="removeGetCom()">Destroy Component</button>
+</div>

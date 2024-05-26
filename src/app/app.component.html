@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- interpolation example-->
+    <!-- <h1>Hello world {{title}}</h1>   
+  <p>{{data}}</p>-->
+
+    <!-- selector example -->
+    <!-- <app-test></app-test> 
+  <app-demo></app-demo>
+  <app-login></app-login>
+  <app-register></app-register> -->
+
+    <!-- events and get value -->
+    <!-- <button (click)="getData(123,'rahul')">Click Me</button><br /> <br /> 
+  <input type="text" #name (keyup)="test(name.value)" placeholder="keyup" /><br /> <br /> 
+  <input type="text" #name1 (keydown)="test(name1.value)" placeholder="keydown" /><br /> <br />
+  <input type="text" #name2 (blur)="test(name2.value)" placeholder="keydown" /><br /> <br /> -->
+
+    <!-- <input type="text" #uname placeholder="enter name" name="username123">
+  <button (click)="getValue(uname.value)">click me</button>
+  <p>text is :{{enterName }}</p> -->
+
+    <!-- counter -->
+    <!-- <div>counter : {{counter}}</div>
+  <button (click)="counterIncrement('minus')">Decrement</button>
+  <button (click)="counterIncrement('add')">Increment</button> -->
+
+    <!-- Basic style
+  <h3 class="ccolor">style in angular</h3>
+  <app-test></app-test> -->
+
+    <!-- property binding -->
+    <!-- <input type="text" name="username" [placeholder]="placeholder" > -->
+
+    <!-- if condition -->
+    <!-- <p *ngIf="age>18; else name">
+    you are eligible
+  </p>    
+
+  <ng-template #name>
+    you are not eligible
+  </ng-template> -->
+
+    <!-- if else elseif -->
+    <!-- <p *ngIf ="day == 1">
+    sunday
+  </p>
+  <p *ngIf ="day == 2">
+    monday
+  </p>
+  <p *ngIf ="day == 3">
+    tueday
+  </p>-->
+
+    <!-- switch case -->
+    <!-- <div [ngSwitch]="myVariable">
+    <div *ngSwitchCase="'value1'">Value 1 is selected</div>
+    <div *ngSwitchCase="'value2'">Value 2 is selected</div>
+    <div *ngSwitchCase="'value3'">Value 3 is selected</div>
+    <div *ngSwitchDefault>None of the above values are selected</div>
+  </div> -->
+
+    <!-- for loop -->
+    <!-- <p *ngFor="let item of users">Name is:{{item}}</p>
+  <p *ngFor="let item of userdeatils">{{item.name}}||{{item.email}}||{{item.password}}</p> -->
+
+    <!-- nested for loop -->
+    <!-- <ul *ngFor="let item of userss">
+    <li>{{item.name}}</li>
+    <li>{{item.phone}}</li>
+    <ul *ngFor="let account of item.socialAccount">
+      <li>{{account}}</li>
+    </ul>
+  </ul> -->
+
+    <!-- Style Binding/ Dynamic Binding -->
+    <!-- <p [style.color]="color" [style.backgroundColor]="bgColor">This is dynamic Style</p>
+  <button (click)="updateColor()">Update Color</button> -->
+
+    <!-- create a home component -->
+    <!-- <app-header></app-header> -->
+
+    <!-- basic of form -->
+    <!-- <form #basicForm="ngForm" (ngSubmit) ="getformData(basicForm.value)">
+    <input type="text" [(ngModel)]="uname" name="uname" placeholder="enter user name" /> <br><br>
+    <input type="email" [(ngModel)]="email" name="email" placeholder="enter user email" /><br><br>
+    <input type="password" [(ngModel)]="password"  name="password" placeholder="enter user password" /><br><br>
+    <button >Submit</button>
+  </form>
+  <ul>
+    <li>{{userData.uname}}</li>
+    <li>{{userData.email}}</li>
+    <li>{{userData.password}}</li>
+  </ul> -->
+
+    <!-- toggle element -->
+    <!-- <h3 *ngIf="display">Toggle the element</h3>
+  <button (click)="toggleElement()">toggle</button><br><br>  -->
+
+    <!-- bootstrap -->
+    <!-- <ngb-alert [dismissible]="false">
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+  </ngb-alert> -->
+
+    <!-- mui-->
+    <!-- <div class="example-button-row">
+      <button mat-raised-button>Basic</button>
+      <button mat-raised-button color="primary">Primary</button>
+      <button mat-raised-button color="accent">Accent</button>
+      <button mat-raised-button color="warn">Warn</button>
+      <button mat-raised-button disabled>Disabled</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+    </div> -->
+
+    <!-- to do list -->
+    <!-- <input type="text" placeholder="Enter a task" #task>
+  <br><br>
+  <button (click)="addTask(task.value)">Add Task</button>
+
+  <ul *ngFor ="let data of list">
+    <li>{{data.name}} <button (click)="removeTask(data.id)">remove</button></li>
+  </ul> -->
+
+    <!-- send data in child component -->
+    <!-- <app-use-child [sentNumber]= "dataSennt"></app-use-child> -->
+
+    <!-- template driven from and validation -->
+    <!-- <app-formComponent></app-formComponent> -->
+
+    <!-- reactive form -->
+    <!-- <app-reactiveform></app-reactiveform> -->
+
+    <!-- life cycle method in angular -->
+    <!-- <app-parent></app-parent> -->
+
+    <!-- input and output decorators -->
+    <!-- <app-child-pass-data [parentPass] = "passChild"></app-child-pass-data> -->
+    <!-- <app-child-pass-data (childParentEvent) = "childParent($event)"></app-child-pass-data> -->
+    <!-- Ngstyle example -->
+
+    <!-- <ul *ngFor="let item of people">
+    <li [ngStyle]="{'color': getColor(item.country)}">
+      {{item.name}} || {{item.country}}
+    </li>
+  </ul> -->
+
+    <!-- ngClass example -->
+    <!-- <h2>ngClass using string</h2>
+    <p [ngClass]="['blueColor','']">ngClass using with string that see here</p>
+    <div *ngFor="let item of usersss" [ngClass]="'background blueColor'">
+      {{item}}
+    </div>
+    
+    <p [ngClass]="{'blueColor':true,'background':false,mediumfont:true}">example using ngclassssss</p> -->
+
+    <!-- dependencies injection -->
+    <!-- <p>dependencies properties is :  {{pproduct}}</p>
+    <p>dependencies properties is :  {{ppname}}</p>
+    
+    <button (click)="msgClick()">click me</button> -->
+
+
+
+    <!-- routing  -->
+  
+    <!-- static routing -->
+    <!-- <a routerLink="routing1">Routing1</a> <br>
+    <a routerLink="routing2">Routing2</a> <br>
+    <a routerLink="routing3">Routing3</a>  
+    <br> -->
+    
+    <!-- dynamic routing -->
+    <!-- <a routerLink="routing1/20">abc</a> <br>
+    <a routerLink="routing1/21">xyz</a> <br>
+    <a routerLink="routing1/22">pqr</a><br>
+    <router-outlet></router-outlet> -->
+    
+    <!-- lazy loading -->
+    <!-- <h3>lazy loading</h3>
+    <h4>admin module link</h4>
+    <ul>
+      <li><a routerLink="admin/user">users</a></li>
+      <li><a routerLink="admin/about">about</a></li>
+      
+    </ul>
+    <router-outlet></router-outlet> -->
+
+    <!-- make services and used in mutliple file  -->
+    <!-- <h3>services data used in mutliple component</h3>
+    <ul>
+        <li *ngFor="let data of getUser">
+          {{data.name}} : {{data.age}} : {{data.email}}
+        </li>       
+    </ul>
+    <app-footer></app-footer> -->
+    
+    <!-- get api /display data -->
+    <!-- <app-get-api></app-get-api> -->
+
+    <!-- post api -->
+    <!-- <app-post-api></app-post-api> -->
+    
+    <!-- crud operation  -->
+    <!-- <app-reactiveform></app-reactiveform>  -->
+    <!-- <router-outlet></router-outlet> -->
+  
+    <!-- working with pipes --> 
+    <!-- <h3>{{titles | uppercase}}</h3>
+    <h3>{{titles | lowercase}}</h3>
+    <h3>{{today |date: 'fullDate'}}</h3>    
+    <h3>{{a | currency : 'EUR'}}</h3>
+    <h3>{{a | percent}}</h3>
+    <h3>{{today |date: 'fullDate' | uppercase}}</h3>    
+    <h3>{{titles | json}}</h3>
+    <h3>{{user | json}}</h3>
+     -->
+    <!-- custom pipes -->
+    <!-- <h3>{{20 | usdInr:50}}</h3> -->  
+    
+    <!-- authentication -->
+    <app-loader></app-loader>
+    <router-outlet></router-outlet>
+
+    <!-- ngContainer -->
+    <!-- <ng-container  *ngIf="status">
+      <div *ngFor="let item of product">
+        <p>{{item}}</p>
+      </div>
+    </ng-container> -->
+
+    <!-- ngContent -->
+    <!-- <div class="container row">
+      <div class="col-6">
+        <app-common>
+          <h2>hello abc</h2>
+         </app-common>
+      </div>
+      <div class="col-6">
+        <app-common>
+          <h2>hello xyz</h2>
+         </app-common>
+      </div>
+    </div> -->
+
+    <!-- ngtemplate -->
+    
+    <!-- <p *ngIf="age>18; else name">
+      you are eligible
+    </p>    
+  
+    <ng-template #name>
+      you are not eligible
+    </ng-template> -->
+
+    <!-- formArray -->
+
+    <!-- custom directive -->
+    <!-- <div appCustomStyle>helloo</div>
+    <div appCustomAnotherStyle>World</div> -->
+
+    
+  </body>
+</html>

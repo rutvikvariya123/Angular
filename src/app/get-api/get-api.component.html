@@ -1,0 +1,24 @@
+<h2 class="my-5 text-center">data get from api</h2>
+    <table class="table w-50 m-auto">
+        <thead  class="thead-dark">
+            <tr>
+                <th class="p-3">id</th>
+                <th class="p-3">name</th>
+                <th class="p-3">username</th>
+                <th class="p-3">email</th>
+                <th class="p-3">phone</th>
+                <th class="p-3">webiste</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let users of users">
+            <tr>
+                <td>{{users.id}}</td>
+                <td>{{users.name}}</td>
+                <td>{{users.username}}</td>
+                <td>{{users.email}}</td>
+                <td>{{users.phone}}</td>
+                <td>{{users.website}}</td>
+            </tr>
+        </tbody>
+    </table>
+

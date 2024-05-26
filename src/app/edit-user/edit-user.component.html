@@ -1,0 +1,128 @@
+<div>
+    <h3 class="text-primary header m-3">Edit Form</h3>
+    <div class="m-3 border border-1  rounded border-secondary p-3">
+        <form [formGroup]="userForm" (ngSubmit)="UpdateData()">
+            <div class="row d-flex justify-content-between">
+                <div class="col-md-3 col-sm-4 m-2">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" name="fname" formControlName="fname" class="form-control">
+                    </div>
+                    <div *ngIf="getControl.fname.invalid && (updated || getControl.fname.dirty || getControl.fname.touched)">
+                        <div *ngIf="getControl.fname.errors && getControl.fname.errors.required" class="text-danger">First Name is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <div>
+                        <label class="form-label">Last Name</label>
+                        <input type="text" name="lname"  formControlName="lname" class="form-control">
+                    </div>
+                    <div *ngIf="getControl.lname.invalid && (updated || getControl.lname.dirty || getControl.lname.touched)">
+                        <div *ngIf="getControl.lname.errors && getControl.lname.errors.required" class="text-danger">Last Name is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" formControlName="email" class="form-control">
+                    <div *ngIf="(updated || getControl.email.dirty || getControl.email.touched) && getControl.email.invalid" >
+                        <div *ngIf="getControl.email.errors && getControl.email.errors.required" class="text-danger">Email is required</div>
+                        <div *ngIf="getControl.email.errors && !getControl.email.errors.required && getControl.email.errors.email" class="text-danger">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="text" name="contact" formControlName="contact"  (keypress)="inputMno($event)" class="form-control">
+                    <div *ngIf="getControl.contact.invalid && (updated || getControl.contact.dirty || getControl.contact.touched)">
+                        <div *ngIf="getControl.contact.errors && getControl.contact.errors.required" class="text-danger">Mobile Number is required</div>
+                        <div *ngIf="getControl.contact.errors && (getControl.contact.errors.pattern || getControl.contact.errors.maxlength || getControl.contact.errors.minlength)" class="text-danger">Phone Number must be at least 10 numbers </div>
+                    </div>            
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">Department</label>
+                    <select name="department" class="form-control" formControlName="department">
+                        <option value="">---- Please select ----</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemestry">Chemestry</option>
+                        <option value="Maths">Maths</option>
+                    </select>
+                    <div *ngIf="getControl.department.invalid && (updated || getControl.department.dirty || getControl.department.touched)">
+                        <div *ngIf="getControl.department.errors && getControl.department.errors.required" class="text-danger">Department is Required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="d-block form-label">Head</label>
+                    <label class="radio-inline me-2"><input type="radio" name="head" formControlName="head" value="Head Boy"> Head Boy</label>
+                    <label class="radio-inline"><input type="radio"  name="head" formControlName="head" value="Head Girl"> Head Girl</label>
+                    <div *ngIf="getControl.head.invalid && (updated || getControl.head.dirty || getControl.head.touched)">
+                        <div *ngIf="getControl.head.errors && getControl.head.errors.required" class="text-danger">Head is Required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-control" name="date" formControlName="date" [min]="minDate">
+                    <div *ngIf="getControl.date.invalid && (updated || getControl.date.dirty || getControl.date.touched)">
+                        <div *ngIf="getControl.date.errors && getControl.date.errors.required" class="text-danger">Date is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">City</label>
+                    <input type="text" name="city" formControlName="city" class="form-control">
+                    <div *ngIf="getControl.city.invalid && (updated || getControl.city.dirty || getControl.city.touched)">
+                        <div *ngIf="getControl.city.errors && getControl.city.errors.required" class="text-danger">City is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">State</label>
+                    <input type="text" name="state" formControlName="state" class="form-control">
+                    <div *ngIf="getControl.state.invalid && (updated || getControl.state.dirty || getControl.state.touched)">
+                        <div *ngIf="getControl.state.errors && getControl.state.errors.required" class="text-danger">State is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">Country</label>
+                    <input type="text" name="country" formControlName="country" class="form-control">
+                    <div *ngIf="getControl.country.invalid && (updated || getControl.country.dirty || getControl.country.touched)">
+                        <div *ngIf="getControl.country.errors && getControl.country.errors.required" class="text-danger">Country is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">Pincode</label>
+                    <input type="text" name="pincode" formControlName="pincode" class="form-control" (keypress)="pincode($event)">
+                    <div *ngIf="getControl.pincode.invalid && (updated || getControl.pincode.dirty || getControl.pincode.touched)">
+                        <div *ngIf="getControl.pincode.errors && getControl.pincode.errors.required" class="text-danger">Pincode is required</div>
+                        <div *ngIf="getControl.pincode.errors && (getControl.pincode.errors.maxlength || getControl.pincode.errors.minlength)" class="text-danger">Pincode must be 6 digit</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" formControlName="password" class="form-control">
+                    <div *ngIf="updated && getControl.password?.invalid || (getControl.password.dirty || getControl.password.touched)">
+                        <div *ngIf="getControl.password?.errors?.required" class="text-danger">Password is required</div>
+                        <div *ngIf="getControl.password?.errors?.minlength" class="text-danger">Password must be greater than 6 characters</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 m-2">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="cpassword" formControlName="cpassword" class="form-control">
+                    <div *ngIf="updated && getControl.cpassword?.invalid || (getControl.cpassword.dirty || getControl.cpassword.touched)">
+                        <div *ngIf="getControl.cpassword?.errors?.required" class="text-danger">Confirm Password is required</div>
+                        <div *ngIf="userForm.errors?.mismatch && getControl.cpassword.dirty" class="text-danger">Passwords do not match.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 m-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="cbox" formControlName="cbox">
+                            <label class="form-check-label">I agree terms and conditions</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary m-1">Update</button>
+                <!-- <button *ngIf="showUpdate" type="button" class="btn btn-info" (click)="updateData()">Update</button> -->
+                
+            </div>  
+        </form>
+    </div>
+</div>
